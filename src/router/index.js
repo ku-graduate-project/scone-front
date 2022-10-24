@@ -1,15 +1,31 @@
 import { createWebHistory, createRouter } from "vue-router";
 
 import CreateStudyGroup from "@/views/CreateStudyGroup";
+import UpdateStudyGroup from "@/views/UpdateStudyGroup";
+import SconeNotFound from "@/components/layout/SconeNotFound";
 import SconeHome from "@/views/SconeHome";
 import MyPage from "@/views/MyPage";
 import ManageStudyGroup from "@/views/ManageStudyGroup";
 
 const routes = [
     {
-        path: "/group/create",
+        path: "/group",
         name: "스터디 그룹 생성",
-        component: CreateStudyGroup
+        component: SconeNotFound,
+        children:[
+            {
+                path:'create',
+                component: CreateStudyGroup
+            },
+            {
+                path:'study',
+                component: ManageStudyGroup
+            },
+            {
+                path:'update',
+                component: UpdateStudyGroup
+            },
+        ],
     },
     {
         path: "/group/study",
